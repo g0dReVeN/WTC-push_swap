@@ -1,0 +1,48 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jordan_macos <jordan_macos@student.42.f    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/05/28 11:41:24 by jgovend           #+#    #+#              #
+#    Updated: 2018/08/26 16:35:45 by jordan_maco      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME := checker
+
+SRC_PATH := ./srcs
+
+SRC := checker.c error_h.c stack_ops.c
+
+OBJ_PATH := ./objs
+
+OBJ := $(addprefix $(OBJ_PATH)/,$(SRC:%.c=%.o))
+
+LIB_PATH := ../../libft
+
+LIB := libft.a
+
+CC := gcc
+
+FLAGS := -Wall -Werror -Wextra  -I ./includes
+
+all: $(NAME)
+
+$(OBJ_PATH):
+	@mkdir -p $(OBJ_PATH)
+
+$(OBJ_PATH)/%.o:$(SRC_PATH)/%.c
+	@$(CC) $(FLAGS) -o $@ -c $<
+
+$(NAME): $(OBJ_PATH) $(OBJ)
+	@$(CC) $(FLAGS) $(OBJ) $(LIB_PATH)/$(LIB) -o ../../$(NAME)
+
+clean:
+	@rm -Rf $(OBJ_PATH)
+
+fclean: clean
+	@rm -Rf ../../$(NAME)
+
+re: fclean all
