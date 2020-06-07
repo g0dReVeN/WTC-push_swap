@@ -12,58 +12,60 @@
 
 #include "../includes/checker.h"
 
-void    shift_left(t_stack *a)
+void	rotate_left(t_stack *a, int i, int temp)
+{
+	while (++i < (a->csize - 1))
+	{
+		a->stk[i] = a->stk[i + 1];
+	}
+	a->stk[a->csize - 1] = temp;
+}
+
+void	rotate_right(t_stack *a, int i, int temp)
+{
+	while (--i > 0)
+	{
+		a->stk[i] = a->stk[i - 1];
+	}
+	a->stk[0] = temp;
+}
+
+void	rotate(t_stack *a, int direction)
 {
 	int i;
 	int temp;
 
 	if (a->csize > 1)
 	{
-		i = -1;
-		temp = a->stk[0];
-		while (++i < (a->csize - 1))
+		if (direction)
 		{
-			a->stk[i] = a->stk[i + 1];
+			i = -1;
+			temp = a->stk[0];
+			rotate_left(a, i, temp);
 		}
-		a->stk[a->csize - 1] = temp;
+		else
+		{
+			i = a->csize;
+			temp = a->stk[a->csize - 1];
+			rotate_right(a, i, temp);
+		}
 	}
 }
 
-void    shift_right(t_stack *a)
+void	push(t_stack *a, t_stack *b)
 {
-	int i;
-	int temp;
+	int pop;
 
-	if (a->csize > 1)
-	{
-		i = a->csize;
-		temp = a->stk[a->csize - 1];
-		while (--i > 0)
-		{
-			a->stk[i] = a->stk[i - 1];
-		}
-		a->stk[0] = temp;
-	}
-}
+	rotate(b, 1);
+	pop = b->stk[b->csize - 1];
+	b->csize--;
 
-void    push(t_stack *a, int b)
-{
 	a->csize++;
-	shift_right(a);
-	a->stk[0] = b;
+	rotate(a, 0);
+	a->stk[0] = pop;
 }
 
-int     pop(t_stack *a)
-{
-	int ret;
-
-	shift_left(a);
-	ret = a->stk[a->csize - 1];
-	a->csize--;
-	return (ret);
-}
-
-void    print_stk(t_stack a, t_stack b)
+void	print_stk(t_stack a, t_stack b)
 {
 	int i;
 

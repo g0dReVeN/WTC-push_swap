@@ -44,7 +44,8 @@ int		check_isize(int argc, char **argv, t_stack *a, t_stack *b)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			(sign = 1) && (num = 0);
+			sign = 1;
+			num = 0;
 			while (argv[i][j] == '+' || argv[i][j] == '-' || argv[i][j] == ' ')
 				(argv[i][j++] == '-') && (sign = -1);
 			while (ft_isdigit(argv[i][j]))
@@ -67,17 +68,17 @@ int		check_num(char *str, t_stack *a)
 	f = 0;
 	while (str[i])
 	{
-		(str[i] == '+' || str[i] == '-') && i++;
+		if (str[i] == '+' || str[i] == '-') i++;
 		while (ft_isdigit(str[i]))
 			i++;
-		(str[i] == '\0' || str[i] == ' ') && a->msize++;
-		(str[i] == ' ' && (i - 1) >= 0 && !ft_isdigit(str[i - 1])) && f++;
+		if (str[i] == '\0' || str[i] == ' ') a->msize++;
+		if (str[i] == ' ' && (i - 1) >= 0 && !ft_isdigit(str[i - 1])) f++;
 		if (f || str[0] == ' ' || (str[i] != '\0' && str[i] != ' '))
 		{
 			a->msize = 0;
 			return (0);
 		}
-		(str[i]) && i++;
+		if (str[i]) i++;
 	}
 	return (1);
 }

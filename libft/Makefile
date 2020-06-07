@@ -26,7 +26,9 @@ SRC := ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 	ft_strnew.c ft_strresize.c ft_strnstr.c ft_strrchr.c ft_strsplit.c \
 	ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_swap.c \
 	ft_llintlen.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
-	ft_lstiter.c ft_lstmap.c get_next_line.c ft_root.c ft_power.c ft_atoll.c
+	ft_lstiter.c ft_lstmap.c get_next_line.c ft_root.c ft_power.c ft_atoll.c \
+	ft_int_array_sort.c ft_get_smallest_int.c ft_get_smallest_int_index.c \
+	ft_int_array_init.c ft_get_largest_int.c ft_get_largest_int_index.c
 
 OBJ_PATH := ./objs
 

@@ -13,6 +13,12 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # define BUFF_SIZE 1
+# define MAXINT 2147483647
+# define MININT -2147483648
+# define true 1
+# define false 0
+# define EXIT_FAILURE 1
+# define EXIT_SUCCESS 0
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -27,6 +33,12 @@ typedef	struct	s_list
 int				ft_atoi(const char *str);
 long long int	ft_atoll(const char *str);
 void			ft_bzero(void *s, size_t n);
+int				ft_get_largest_int_index(int *arr, int size);
+int				ft_get_largest_int(int *arr, int size);
+int				ft_get_smallest_int_index(int *arr, int size);
+int				ft_get_smallest_int(int *arr, int size);
+void			ft_int_array_init(int *arr, int value, int size);
+void			ft_int_array_sort(int *arr, int size);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);

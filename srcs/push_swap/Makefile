@@ -14,7 +14,7 @@ NAME := push_swap
 
 SRC_PATH := ./srcs
 
-SRC := push_swap.c error_h.c stack_ops.c inst_ops.c algo_ops.c
+SRC := push_swap.c exec_ops.c error_h.c stack_ops.c inst_ops.c algo_ops.c
 
 OBJ_PATH := ./objs
 

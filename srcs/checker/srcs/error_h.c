@@ -44,9 +44,11 @@ int		check_isize(int argc, char **argv, t_stack *a, t_stack *b)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			(sign = 1) && (num = 0);
+			sign = 1;
+			num = 0;
 			while (argv[i][j] == '+' || argv[i][j] == '-' || argv[i][j] == ' ')
 				(argv[i][j++] == '-') && (sign = -1);
+				// sign = (argv[i][j++] == '-') ? -1 : 1;
 			while (ft_isdigit(argv[i][j]))
 				num = num * 10 + argv[i][j++] - '0';
 			if ((num * sign) > MAXINT || (num * sign) < MININT)
@@ -67,17 +69,17 @@ int		check_num(char *str, t_stack *a)
 	f = 0;
 	while (str[i])
 	{
-		(str[i] == '+' || str[i] == '-') && i++;
+		if (str[i] == '+' || str[i] == '-') i++;
 		while (ft_isdigit(str[i]))
 			i++;
-		(str[i] == '\0' || str[i] == ' ') && a->msize++;
-		(str[i] == ' ' && (i - 1) >= 0 && !ft_isdigit(str[i - 1])) && f++;
+		if (str[i] == '\0' || str[i] == ' ') a->msize++;
+		if (str[i] == ' ' && (i - 1) >= 0 && !ft_isdigit(str[i - 1])) f++;
 		if (f || str[0] == ' ' || (str[i] != '\0' && str[i] != ' '))
 		{
 			a->msize = 0;
-			return (0);
+			return (false);
 		}
-		(str[i]) && i++;
+		if (str[i]) i++;
 	}
 	return (1);
 }
@@ -96,7 +98,7 @@ int		check_int(int argc, char **argv, t_stack *a, t_stack *b)
 		if (check_num(argv[i], a))
 			i++;	
 		else
-			return (0);
+			return (false);
 	}
 	return (check_isize(argc, argv, a, b) ? 1 : 0);
 }
@@ -104,12 +106,10 @@ int		check_int(int argc, char **argv, t_stack *a, t_stack *b)
 int     check_order(t_stack a)
 {
 	int	i;
-    int f;
 
 	i = -1;
-    f = 0;
 	while (++i < (a.csize - 1))
 		if (a.stk[i] > a.stk[i + 1])
-            f++;
-	return (f == 0 ? 1 : 0);
+			return (false);
+	return (true);
 }

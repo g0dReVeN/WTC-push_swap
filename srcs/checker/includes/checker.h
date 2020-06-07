@@ -13,8 +13,17 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 # include "../../../libft/includes/libft.h"
-# define MAXINT 2147483647
-# define MININT -2147483648
+# define SA "sa"
+# define SB "sb"
+# define SS "ss"
+# define PA "pa"
+# define PB "pb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
 
 typedef	struct	s_stack
 {
@@ -25,10 +34,8 @@ typedef	struct	s_stack
 
 int				check_int(int argc, char **argv, t_stack *a, t_stack *b);
 int				check_order(t_stack a);
-void    		shift_left(t_stack *a);
-void    		shift_right(t_stack *a);
-void    		push(t_stack *a, int b);
-int     		pop(t_stack *a);
-void			print_stk(t_stack a, t_stack b);
+void    		rotate(t_stack *a, int direction);
+void    		push(t_stack *a, t_stack *b);
+// void			print_stk(t_stack a, t_stack b);
 
 #endif

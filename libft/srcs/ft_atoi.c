@@ -33,10 +33,10 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 		num = num * 10 + *(str++) - '0';
-	if (ft_llintlen(num) >= 19)
-		return (sign == -1 ? 0 : -1);
-	if (num > 9223372036854775807)
-		return (sign == -1 ? 0 : -1);
+	if (num * sign > MAXINT)
+		return -1;
+	else if (num * sign < MININT)
+		return 0;
 	else
 		return (num * sign);
 }
