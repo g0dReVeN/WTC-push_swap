@@ -26,7 +26,7 @@ int		check_dup(t_stack *a, t_stack *b)
 				return (0);
 	}
 	b->msize = a->msize;
-	b->stk = (int *)malloc(sizeof(int *) * a->msize);
+	b->stk = malloc(sizeof(int *) * a->msize);
 	return (1);
 }
 
@@ -38,7 +38,7 @@ int		check_isize(int argc, char **argv, t_stack *a, t_stack *b)
 	int						sign;
 
 	i = 0;
-	a->stk = (int *)malloc(sizeof(int *) * a->msize);
+	a->stk = malloc(sizeof(int *) * a->msize);
 	while (++i < argc)
 	{
 		j = 0;
