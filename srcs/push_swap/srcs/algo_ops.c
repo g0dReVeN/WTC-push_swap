@@ -38,13 +38,13 @@ void	set_smallest_chunk(t_stack a, int *chunk, int size)
 	int temp[a.csize];
 
 	i = -1;
-	while (i++ < a.csize)
+	while (++i < a.csize)
 		temp[i] = a.stk[i];
 
 	ft_int_array_sort(temp, a.csize);
 
 	i = -1;
-	while (i++ < size)
+	while (++i < size)
 		chunk[i] = temp[a.csize - 1 - i];
 }
 
