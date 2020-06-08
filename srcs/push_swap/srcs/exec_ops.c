@@ -27,13 +27,10 @@ void	free_inst(t_ops *head)
 
 void	terminate(t_stack *a, t_stack *b, t_ops *head, int flag)
 {
-	// print_inst(head);
-	ft_putstr_fd("JJ\n", 2);
+	print_inst(head);
 
-	if (a->msize) {
+	if (a->msize)
 		free(a->stk);
-		ft_putstr_fd("JJ\n", 2);
-	}
 	if (b->msize)
 		free(b->stk);
 	free_inst(head);
