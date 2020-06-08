@@ -26,7 +26,7 @@ LIB := libft.a
 
 CC := gcc
 
-FLAGS := -Wall -Werror -Wextra  -I ./includes
+FLAGS := -g -Wall -Werror -Wextra  -I ./includes
 
 all: $(NAME)
 
