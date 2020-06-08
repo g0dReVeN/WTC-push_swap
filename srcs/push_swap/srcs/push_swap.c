@@ -127,7 +127,7 @@ int		main(int argc, char **argv)
 		if (check_int(argc, argv, &a, &b))
 		{
 			if (check_order(a) == 1)
-				exit(EXIT_SUCCESS);
+				terminate(EXIT_SUCCESS);
 			else if (a.msize < 10)
 				exec_simple_ops(&a, &b, &head);
 			else
