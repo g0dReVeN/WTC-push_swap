@@ -17,7 +17,7 @@ void	add_inst(t_ops *head, char *inst)
 	t_ops *cnode;
 	char *dest;
 
-	cnode = (t_ops *)malloc(sizeof(t_ops *));
+	cnode = malloc(sizeof(t_ops));
 	dest = &(cnode->ops[0]);
 	dest = ft_strcpy(dest, inst);
 	while (head->next)
