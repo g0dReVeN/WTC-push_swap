@@ -38,7 +38,7 @@ int		check_isize(int argc, char **argv, t_stack *a, t_stack *b)
 	int						sign;
 
 	i = 0;
-	a->stk = malloc(sizeof(int) * a->msize );
+	a->stk = malloc(sizeof(int) * a->msize);
 	while (++i < argc)
 	{
 		j = 0;

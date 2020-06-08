@@ -80,12 +80,15 @@ int		main(int argc, char **argv)
 		{
 			while ((gnl = get_next_line(0, &line)) && exec_op(&a, &b, line))
 				ft_strdel(&line);
+
 			if (line)
 				ft_strdel(&line);
-			if (gnl == 0)
+
+			if (!gnl) 
+			{
 				(check_order(a) == 1) ? ft_putstr("OK\n") : ft_putstr("KO\n");
-			if (gnl == 0)
 				free_stk(&a, &b, true);
+			}
 		}
 		ft_putstr_fd("Error\n", 2);
 		free_stk(&a, &b, false);
