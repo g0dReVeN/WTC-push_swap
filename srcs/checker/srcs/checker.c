@@ -49,11 +49,15 @@ int		exec_dual_op(t_stack *a, t_stack *b, char *op)
 int		exec_op(t_stack *a, t_stack *b, char *op)
 {
 	if (!ft_strcmp(op, SA))
+	{
 		if (a->csize > 1)
 			ft_swap(&a->stk[0], &a->stk[1]);
+	}
 	else if (!ft_strcmp(op, SB))
+	{
 		if (b->csize > 1)
 			ft_swap(&b->stk[0], &b->stk[1]);
+	}
 	else if (!ft_strcmp(op, PA))
 		push(a, b);
 	else if (!ft_strcmp(op, PB))
