@@ -56,13 +56,16 @@ void	push(t_stack *a, t_stack *b)
 {
 	int pop;
 
-	rotate(b, 1);
-	pop = b->stk[b->csize - 1];
-	b->csize--;
+	if (b->csize) 
+	{
+		rotate(b, 1);
+		pop = b->stk[b->csize - 1];
+		b->csize--;
 
-	a->csize++;
-	rotate(a, 0);
-	a->stk[0] = pop;
+		a->csize++;
+		rotate(a, 0);
+		a->stk[0] = pop;
+	}
 }
 
 void	print_stk(t_stack a, t_stack b)
