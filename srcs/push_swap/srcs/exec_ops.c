@@ -33,7 +33,12 @@ void	terminate(t_stack *a, t_stack *b, t_ops *head, int flag)
 		free(a->stk);
 	if (b->msize)
 		free(b->stk);
+
 	free_inst(head);
+
+	if (!flag)
+		ft_putstr_fd("Error\n", 2);
+
 	flag ? exit(EXIT_SUCCESS) : exit(EXIT_FAILURE);
 }
 

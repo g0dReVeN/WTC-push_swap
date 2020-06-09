@@ -12,13 +12,21 @@
 
 #include "../includes/checker.h"
 
-void	free_stk(t_stack *a, t_stack *b, int flag)
+void	terminate(t_stack *a, t_stack *b, int flag)
 {
+	if (!flag)
+		ft_putstr_fd("Error\n", 2);
+	else
+		if (check_order(*a) == 1 && !b->csize)
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+
 	if (a->msize)
 		free(a->stk);
 	if (b->msize)
 		free(b->stk);
-	
+
 	flag ? exit(EXIT_SUCCESS) : exit(EXIT_FAILURE);
 }
 
@@ -84,6 +92,7 @@ int		main(int argc, char **argv)
 
 	if (argc > 1)
 	{
+		gnl = true;
 		if (check_int(argc, argv, &a, &b))
 		{
 			while ((gnl = get_next_line(0, &line)) && exec_op(&a, &b, line))
@@ -91,15 +100,10 @@ int		main(int argc, char **argv)
 
 			if (line)
 				ft_strdel(&line);
-
-			if (!gnl) 
-			{
-				(check_order(a) == 1) ? ft_putstr("OK\n") : ft_putstr("KO\n");
-				free_stk(&a, &b, true);
-			}
 		}
-		ft_putstr_fd("Error\n", 2);
-		free_stk(&a, &b, false);
+
+		terminate(&a, &b, !gnl);
 	}
+
 	return (EXIT_SUCCESS);
 }

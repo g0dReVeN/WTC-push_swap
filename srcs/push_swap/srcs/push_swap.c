@@ -124,17 +124,19 @@ int		main(int argc, char **argv)
 	{
 		head.size = 0;
 		head.next = NULL;
+		
 		if (check_int(argc, argv, &a, &b))
 		{
-			if (check_order(a) == 1)
+			if (check_order(a) == 1 && !b.csize)
 				terminate(&a, &b, &head, true);
 			else if (a.msize < 10)
 				exec_simple_ops(&a, &b, &head);
 			else
 				exec_ops(&a, &b, &c, &head, a.msize < 250 ? 24 : 45);
 		}
-		ft_putstr_fd("Error\n", 2);
+
 		terminate(&a, &b, &head, false);
 	}
+
 	return (EXIT_SUCCESS);
 }
